@@ -1,0 +1,25 @@
+#######################################
+# Syntax Coloring Map For 
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+RF_HT6P20	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+beginRX	KEYWORD2
+beginTX	KEYWORD2
+beginRXTX	KEYWORD2
+getCode	KEYWORD2
+available	KEYWORD2
+sendCode	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
