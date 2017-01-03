@@ -12,43 +12,37 @@ Modificado: 03/04/2015
 BASE DO CODIGO: https://gist.github.com/acturcato/8423241
 **************************************************************************/
 
-#include <RF_HT6P20.h>
-
-#if (ARDUINO >= 100)
-  #include "Arduino.h"
-#else
-  #include "WProgram.h"
-#endif
+#include "RF_HT6P20.h"
 
 RF_HT6P20::RF_HT6P20()
 {
 
 }
+
 void RF_HT6P20::beginRX(int _pinRX)
 {
 	pinRF_RX = _pinRX;
 	pinMode(pinRF_RX,INPUT);
 }
+
 void RF_HT6P20::beginTX(int _pinTX)
 {
 	pinRF_TX = _pinTX;
 	pinMode(pinRF_TX,OUTPUT);
 	digitalWrite(pinRF_TX, LOW);
 }
+
 void RF_HT6P20::beginRXTX(int _pinRX, int _pinTX)
 {
-	pinRF_RX = _pinRX;
-	pinMode(pinRF_RX,INPUT);
-	
-	pinRF_TX = _pinTX;
-	pinMode(pinRF_TX,OUTPUT);
-	digitalWrite(pinRF_TX, LOW);	
+	beginRX(_pinRX);
+	beginTX(_pinTX);	
 }
 
 unsigned long RF_HT6P20::getCode()
 {
 	return(addressFull);
 }
+
 boolean RF_HT6P20::available()
 {
   static boolean startbit;      //checks if start bit was identified
@@ -153,6 +147,7 @@ void RF_HT6P20::sendData(char data)
     myDelay(pulse);
   }
 }
+
 void RF_HT6P20::sendPilotCode()
 {
   //Keep pinRF on HIGH for little time
@@ -167,6 +162,7 @@ void RF_HT6P20::sendPilotCode()
   digitalWrite(pinRF_TX, HIGH);
   myDelay(lambda_TX);
 }
+
 void RF_HT6P20::sendCode(unsigned long addressCodeHEX)
 {
  String addressCodeBIN = "0000000000000000000000000000" + String(addressCodeHEX, BIN);

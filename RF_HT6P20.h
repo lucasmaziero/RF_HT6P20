@@ -31,14 +31,13 @@ class RF_HT6P20
 		void beginRXTX(int _pinRX, int _pinTX);
 		unsigned long getCode();
 		boolean available();
+		void sendCode(unsigned long addressCodeHEX);
 		
+    private:
 		void myDelay(unsigned int t);
 		void sendData(char data);
 		void sendPilotCode();
-		void sendCode(unsigned long addressCodeHEX);
 		
-	
-    private:
 		int pinRF_RX;
 		int lambda_RX;
 		
